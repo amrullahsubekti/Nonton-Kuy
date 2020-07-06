@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bwa_flutix/models/models.dart';
+import 'package:bwa_flutix/services/services.dart';
 import 'package:meta/meta.dart';
 
 part 'user_event.dart';
@@ -13,6 +15,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Stream<UserState> mapEventToState(
     UserEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is LoadUser) {
+      User user = await UserServices.getUser(event.id);
+
+      yield UserLoaded(user);
+    } else if (event is SignOut) {
+      yield UserInitial();
+    }
   }
 }
