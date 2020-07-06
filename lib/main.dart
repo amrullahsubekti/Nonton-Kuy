@@ -1,5 +1,9 @@
+import 'package:bwa_flutix/bloc/blocs.dart';
 import 'package:bwa_flutix/services/services.dart';
+import 'package:bwa_flutix/ui/pages/pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,48 +12,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Column(
-              children: [
-                RaisedButton(
-                    child: Text('Sign Up'),
-                    onPressed: () async {
-                      SignInSignUpResult result = await AuthServices.signUp(
-                          "amrullah167@gmail.com",
-                          "123456",
-                          "Amrul",
-                          ["Action", "Horror", "Music", "Drama"],
-                          "English");
-
-                      if (result.user == null) {
-                        print(result.message);
-                      } else {
-                        print(result.user.toString());
-                      }
-                    }),
-                RaisedButton(
-                    child: Text('Sign In'),
-                    onPressed: () async {
-                      SignInSignUpResult result = await AuthServices.signIn(
-                        "amrullah167@gmail.com",
-                        "123457",
-                      );
-
-                      if (result.user == null) {
-                        print(result.message);
-                      } else {
-                        print(result.user.toString());
-                      }
-                    }),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return StreamProvider.value(
+      value: AuthServices.userStream,
+      child: MultiBlocProvider(
+          providers: [BlocProvider(create: (_) => PageBloc())],
+          child:
+              MaterialApp(debugShowCheckedModeBanner: false, home: Wrapper())),
     );
   }
 }
