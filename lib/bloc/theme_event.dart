@@ -8,6 +8,5 @@ class ChangeTheme extends ThemeEvent {
 
   ChangeTheme(this.themeData);
 
-  @override
   List<Object> get props => [themeData];
 }
