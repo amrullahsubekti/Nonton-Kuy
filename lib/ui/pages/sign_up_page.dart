@@ -32,6 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
       },
       child: Scaffold(
         body: Container(
+          color: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: defaultMargin),
           child: ListView(
             children: <Widget>[

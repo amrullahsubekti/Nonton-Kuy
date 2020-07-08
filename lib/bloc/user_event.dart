@@ -13,3 +13,11 @@ class LoadUser extends UserEvent {
 class SignOut extends UserEvent {
   List<Object> get props => [];
 }
+
+class UpdateaData extends UserEvent {
+  final String name;
+  final String profileImage;
+  UpdateaData({this.name, this.profileImage});
+
+  List<Object> get props => [name, profileImage];
+}
