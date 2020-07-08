@@ -136,6 +136,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   SizedBox(height: 16),
                   TextField(
                     controller: passwordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -147,6 +148,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   SizedBox(height: 16),
                   TextField(
                     controller: retypePasswordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -200,7 +202,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         widget.registrationData.password =
                             passwordController.text;
 
-                        //todo: go to preference page
+                        context
+                            .bloc<PageBloc>()
+                            .add(GoToPreferencePage(widget.registrationData));
                       }
                     },
                   )
