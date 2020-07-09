@@ -1,6 +1,6 @@
-# bwa_flutix
+# Nonton-kuy
 
-A new Flutter project.
+My new Flutter project from the cave xD
 
 ## Getting Started
 
