@@ -39,7 +39,7 @@ class SplashPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0)),
                     child: Text(
                       'Get Started',
-                      style: whiteTextFont.copyWith(fontSize: 20),
+                      style: whiteTextFont.copyWith(fontSize: 16),
                     ),
                     onPressed: () {
                       context

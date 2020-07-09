@@ -208,7 +208,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             .add(GoToPreferencePage(widget.registrationData));
                       }
                     },
-                  )
+                  ),
+                  SizedBox(height: 30),
                 ],
               )
             ],
